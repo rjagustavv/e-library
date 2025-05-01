@@ -21,10 +21,6 @@
                             <i class="fas fa-sign-out-alt mr-3"></i>
                             Logout
                         </a>
-                        <a href="login.html" class="flex items-center px-4 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
-                            <i class="fas fa-sign-out-alt mr-3"></i>
-                            Logout
-                        </a>
                     </nav>
                 </div>
             </div>

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Books;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 class BooksController extends Controller
 {
     /**
@@ -20,7 +20,7 @@ class BooksController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -28,7 +28,19 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    // Validasi input
+    $validatedData = $request->validate([
+        'nama'            => 'required|string|max:255',
+        'Penerbit'        => 'required|string|max:255',
+        'Description'     => 'required|string',
+        'TahunPenerbit'   => 'required|integer|min:1800|max:' . date('Y'),
+        'JumlahHalaman'   => 'required|integer|min:1',
+    ]);
+    // Simpan data ke database
+    Books::create($validatedData);
+
+    // Redirect ke route books.index dengan pesan sukses
+    return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan');
     }
 
     /**

@@ -3,7 +3,7 @@
     <main class="flex-1 overflow-y-auto p-6 bg-gray-100">
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-2xl font-semibold text-gray-800">Daftar Buku</h3>
-                    <a href="create.html" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                    <a href="{{ route('books.create')}}" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
                         <i class="fas fa-plus mr-2"></i>Tambah Buku
                     </a>
                 </div>
