@@ -33,7 +33,11 @@
                     </div>
                 @endif
 
-                <form class="space-y-6" action="{{ url('/register') }}" method="POST">
+                    <form class="space-y-6" action="{{ url('/register') }}" method="POST">
+                        @csrf
+                        <!-- Form fields remain the same -->
+
+
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">
                             Nama Lengkap

@@ -10,12 +10,19 @@ class Books extends Model
     use HasFactory;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'table_book';
+
+    /**
      * The attributes that are mass assignable
      * 
      * @var array<int, string>
      */
     protected $fillable = [
-        'NamaBuku',
+        'Nama Buku',
         'Penerbit',
         'Description',
         'TahunPenerbit',
@@ -27,4 +34,7 @@ class Books extends Model
      * 
      * @var array<string, string>
      */
+    protected $casts = [
+        'Tahun Penerbit' => 'integer',
+    ];
 }

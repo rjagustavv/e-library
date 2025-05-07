@@ -45,14 +45,21 @@ class BooksController extends Controller
     {
         // Middleware admin sudah diaktifkan di constructor, tidak perlu cek lagi
         $request->validate([
-            'name' => 'required|string|max:255',
-            'publisher' => 'required|string|max:255',
-            'description' => 'required|string',
-            'publication_year' => 'required|integer|min:1800|max:' . date('Y'),
-            'page_count' => 'required|integer|min:1',
+            'nama_buku' => 'required|string|max:255',
+            'penerbit' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'tahun_terbit' => 'required|integer|min:1800|max:' . date('Y'),
+            'jumlah_halaman' => 'required|integer|min:1',
         ]);
 
-        Books::create($request->all());
+        // Sesuaikan dengan nama kolom di database
+        Books::create([
+            'Nama Buku' => $request->nama_buku,
+            'Penerbit' => $request->penerbit,
+            'Description' => $request->deskripsi,
+            'Tahun Penerbit' => $request->tahun_terbit,
+            'Jumlah Halaman' => $request->jumlah_halaman,
+        ]);
 
         return redirect()->route('books.index')
             ->with('success', 'Buku berhasil ditambahkan.');
@@ -82,14 +89,20 @@ class BooksController extends Controller
     {
         // Middleware admin sudah diaktifkan di constructor, tidak perlu cek lagi
         $request->validate([
-            'name' => 'required|string|max:255',
-            'publisher' => 'required|string|max:255',
-            'description' => 'required|string',
-            'publication_year' => 'required|integer|min:1800|max:' . date('Y'),
-            'page_count' => 'required|integer|min:1',
+            'nama_buku' => 'required|string|max:255',
+            'penerbit' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'tahun_terbit' => 'required|integer|min:1800|max:' . date('Y'),
+            'jumlah_halaman' => 'required|integer|min:1',
         ]);
 
-        $book->update($request->all());
+        $book->update([
+            'Nama Buku' => $request->nama_buku,
+            'Penerbit' => $request->penerbit,
+            'Description' => $request->deskripsi,
+            'Tahun Penerbit' => $request->tahun_terbit,
+            'Jumlah Halaman' => $request->jumlah_halaman,
+        ]);
 
         return redirect()->route('books.index')
             ->with('success', 'Buku berhasil diperbarui.');

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('Penerbit');
             $table->text('Description')->nullable();
             $table->integer('Tahun Penerbit');
-            $table->string('Jumlah Halaman')->unique();
+            $table->integer('Jumlah Halaman');
             $table->timestamps();
         });
     }
