@@ -22,7 +22,18 @@
                 </p>
             </div>
             <div class="mt-8 bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                <form class="space-y-6" action="login.html" method="POST">
+
+                @if ($errors->any())
+                    <div style="color:red;">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form class="space-y-6" action="{{ url('/register') }}" method="POST">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">
                             Nama Lengkap
@@ -88,7 +99,7 @@
 
                     <div>
                         <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            Daftar
+                            <a href="{{ route('dashboard') }}"></a>Daftar
                         </button>
                     </div>
                 </form>
@@ -125,7 +136,7 @@
                 <div class="mt-6 text-center">
                     <p class="text-sm text-gray-600">
                         Sudah punya akun?
-                        <a href="login.html" class="font-medium text-blue-600 hover:text-blue-500">
+                        <a href="{{ route('login') }}" class="font-medium text-blue-600 hover:text-blue-500">
                             Masuk
                         </a>
                     </p>

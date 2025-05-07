@@ -21,8 +21,22 @@
                     Masuk ke dashboard admin
                 </p>
             </div>
+
+            
+            
             <div class="mt-8 bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                <form class="space-y-6" action="dashboard.html" method="POST">
+
+                @if ($errors->any())
+        <div style="color:red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+                <form class="space-y-6" action="{{ route('login') }}" method="POST"
+                @csrf
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">
                             Email
@@ -98,7 +112,7 @@
                 <div class="mt-6 text-center">
                     <p class="text-sm text-gray-600">
                         Belum punya akun?
-                        <a href="register.html" class="font-medium text-blue-600 hover:text-blue-500">
+                        <a href="{{ route('register') }}" class="font-medium text-blue-600 hover:text-blue-500">
                             Daftar sekarang
                         </a>
                     </p>
